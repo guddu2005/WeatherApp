@@ -65,7 +65,7 @@ function App() {
           </li>
         ))}
       </ul>
-      <footer className='mt-80 bg-slate-600 h-10'>&copy; 2024 Guddu Kumar</footer>
+      <footer className='fixed bottom-0'>&copy; 2024 Guddu Kumar</footer>
     </div>
   );
 }
