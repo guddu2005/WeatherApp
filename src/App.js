@@ -15,6 +15,7 @@ function App() {
         throw new Error(`Couldn't fetch weather: ${resp.statusText}`);
       }
       const data = await resp.json();
+      console.log(data);
       let sortDetails = [];
       setWeather(sortData(sortDetails, data));
     } catch (error) {
@@ -46,18 +47,17 @@ function App() {
     e.preventDefault();
     setCurrent(true);
   };
-
   return (
-    <div className="text-center">
-      <h1 className='text-4xl font-semibold bg-yellow-400 h-20 p-4'>Weather Dashboard</h1>
+    <div className="text-center bg-[#EEF7FF] h-screen">
+      <h1 className='text-4xl font-semibold bg-[#CDE8E5] h-20 p-4'>Weather Dashboard</h1>
       <form onSubmit={handleSubmit}>
-        <input type="text" value={city} className='shadow-lg border mt-5 w-64 mr-5 p-2 border-black rounded' placeholder='Enter Your City' onChange={(e) => setCity(e.target.value)} />
-        <button type="submit" className='text-lg bg-blue-600 py-2 px-3 w-24 rounded text-white hover:bg-blue-400'>Search</button>
+        <input type="text" value={city} className='shadow-lg border mt-5 w-64 mr-5 p-2 hover:border-cyan-600 rounded' placeholder='Enter Your City' onChange={(e) => setCity(e.target.value)} />
+        <button type="submit" className='text-lg bg-[#4D869C] py-2 px-3 w-24 rounded text-white hover:bg-[#7AB2B2]'>Search</button>
       </form>
       {loading ? <p>Loading...</p> : null}
-      <ul>
+      <ul id='container' className=''>
         {weather.map((w, index) => (
-          <li key={index} className='text-xl border border-black w-96 mx-auto mt-10 rounded p-5 shadow-md box-shado'>
+          <li key={index} className='text-xl border bg-[#FDFFE2] w-96 mx-auto mt-10 rounded p-5 shadow-md box-shado'>
             <p className='font-bold'>City: {w.city}</p>
             <p>Temperature: {w.temp} <small>°C</small></p>
             <p>Weather: {w.weath}</p>
@@ -65,7 +65,7 @@ function App() {
           </li>
         ))}
       </ul>
-      <footer className='fixed bottom-0'>&copy; 2024 Guddu Kumar</footer>
+      <footer className='fixed bottom-0 bg-[#538392] w-screen'>&copy; 2024 Guddu Kumar</footer>
     </div>
   );
 }
